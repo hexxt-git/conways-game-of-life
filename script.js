@@ -26,6 +26,7 @@ let width = $('container').clientWidth
 let height = $('container').clientHeight
 
 let playing = false;
+let fps = 30
 
 canvas.width = width
 canvas.height = height
@@ -109,7 +110,9 @@ function render(){
 }
 
 function loop(){
-    requestAnimationFrame(loop)
+    setTimeout(() => {
+        requestAnimationFrame(loop)        
+    }, 1000/fps);
     render()
     arr = update(arr)
 }
@@ -146,7 +149,7 @@ $('pause').addEventListener('click', ()=>{
 })
 
 $('randomize').addEventListener('click', ()=>{
-    location.reload(); 
+    location.reload();
 })
 
 

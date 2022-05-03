@@ -36,7 +36,7 @@ background: linear-gradient(45deg, rgba(51,210,128,1) 18%, rgba(63,201,223,1) 90
     user-select: none;
     cursor: pointer;
 }
-button:active{
+button:hover{
     background-color: #222;
     color: #FFF;
 }
