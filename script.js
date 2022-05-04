@@ -151,7 +151,13 @@ $('pause').addEventListener('click', ()=>{
 $('randomize').addEventListener('click', ()=>{
     location.reload();
 })
-
+$('save').addEventListener('click', ()=>{
+    localStorage.setItem( 'save', JSON.stringify(arr))
+})
+$('load').addEventListener('click', ()=>{
+    arr = eval(localStorage.getItem( 'save'))
+    write('arr')
+})
 
 
 
