@@ -20,10 +20,12 @@ function $(id){
     return document.getElementById(id);
 };
 
+let container = $('container')
+let width = container.clientWidth
+let height = container.clientHeight
 let canvas = $('canvas')
 let c = canvas.getContext('2d')
-let width = $('container').clientWidth
-let height = $('container').clientHeight
+
 
 let playing = false;
 let fps = 30
@@ -38,19 +40,10 @@ let border = 1
 let res = 15
 
 let arr = []
-if ( height > width){
-    for ( let i = 0 ; i < height/res ; i++){
-        arr.push([])
-        for ( let a = 0 ; a < width/res ; a++){
-            arr[i].push(!rdm(2))
-        }
-    }
-} else {
-    for ( let i = 0 ; i < width/res ; i++){
-        arr.push([])
-        for ( let a = 0 ; a < height/res ; a++){
-            arr[i].push(!rdm(2))
-        }
+for ( let i = 0 ; i < width/res ; i++){
+    arr.push([])
+    for ( let a = 0 ; a < height/res ; a++){
+        arr[i].push(!rdm(2))
     }
 }
 
