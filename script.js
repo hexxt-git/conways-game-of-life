@@ -22,7 +22,7 @@ function $(id){
 
 let container = $('container')
 let width = container.clientWidth
-let height = container.clientHeight
+let height = container.clientHeight - 9
 let canvas = $('canvas')
 let c = canvas.getContext('2d')
 
@@ -46,9 +46,6 @@ for ( let i = 0 ; i < width/res ; i++){
         arr[i].push(!rdm(2))
     }
 }
-
-write(width)
-
 
 function update(arr){
     if ( playing ){
@@ -89,7 +86,7 @@ function update(arr){
 }
 
 function render(){
-    c.clearRect( 0, 0, width, height)    
+    c.clearRect( 0, 0, width, height)
     for ( let i in arr ){
         for ( let a in arr[i]){
             if(arr[i][a]){
@@ -106,8 +103,12 @@ function loop(){
     setTimeout(() => {
         requestAnimationFrame(loop)        
     }, 1000/fps);
-    render()
+    width = container.clientWidth - 5
+    height = container.clientHeight - 9
+    canvas.width = width
+    canvas.height = height
     arr = update(arr)
+    render()
 }
 
 loop()
@@ -116,8 +117,8 @@ let mouseX = 10000
 let mouseY = 10000
 
 canvas.addEventListener('mousemove', ( event)=>{
-    mouseX = Math.floor(event.x/res)
-    mouseY = Math.floor(event.y/res)
+    mouseX = Math.floor((event.x-5)/res)
+    mouseY = Math.floor((event.y-5)/res)
 })
 
 canvas.addEventListener('click', ()=>{
@@ -149,22 +150,4 @@ $('save').addEventListener('click', ()=>{
 })
 $('load').addEventListener('click', ()=>{
     arr = eval(localStorage.getItem( 'save'))
-    write('arr')
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
